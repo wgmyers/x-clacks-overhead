@@ -1,5 +1,5 @@
 # gnu_terry_pratchett
-Display the X-Clacks-Overhead in Clacks Semaphore
+Display the X-Clacks-Overhead in Clacks Semaphore (addon/extension for Firefox)
 
 In tribute to the late Sir Terry Pratchett many websites are adding the message "GNU Terry Pratchett" into the html header "X-Clacks-Overhead". This plugin allows you to see when a website is using the header and read the message included. The message is also displayed visually in the semaphore style from the upcoming board game "Clacks" by Backspindle Games.
 
