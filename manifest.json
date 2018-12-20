@@ -1,0 +1,36 @@
+{
+
+  "name": "gnu_terry_pratchett",
+  "title": "GNU_Terry_Pratchett",
+  "manifest_version": 2,
+  "id": "jid1-HGPgB0x6133Hig",
+  "description": "Display the X-Clacks-Overhead in Clacks Semaphore",
+  "author": "Rob Grundy",
+  "license": "MPL 2.0",
+  "version": "0.4",
+  
+  "permissions": [
+    "webRequest",
+	"tabs",
+	"alarms",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+	  {
+		"matches": ["<all_urls>"],
+		"js": ["gnu.js"]
+	  }
+	],
+  "background": {
+	  "scripts": ["background-script.js"]
+	},
+	
+  "browser_action": {
+    "default_icon": {
+			"16": "data/Clacks16/BLANK.png",
+			"32": "data/Clacks32/BLANK.png",
+			"64": "data/Clacks64/BLANK.png"
+    }
+  }
+
+}
