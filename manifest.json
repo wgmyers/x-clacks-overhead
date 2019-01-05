@@ -1,13 +1,10 @@
 {
 
-  "name": "gnu_terry_pratchett",
-  "title": "GNU_Terry_Pratchett",
+  "name": "X-Clacks-Overhead",
   "manifest_version": 2,
-  "id": "jid1-HGPgB0x6133Hig",
-  "description": "Display the X-Clacks-Overhead in Clacks Semaphore",
-  "author": "Rob Grundy",
-  "license": "MPL 2.0",
-  "version": "0.4",
+  "description": "Display the X-Clacks-Overhead in Clacks Semaphore, including http-equiv meta tags. Fork from GNU_Terry_Pratchett",
+  "author": "Rob Grundy, Jay Logan",
+  "version": "0.4.1",
   
   "permissions": [
     "webRequest",
