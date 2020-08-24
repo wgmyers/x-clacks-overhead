@@ -27,7 +27,7 @@ function updateIcon() {
 }
 
 function checkTime() {
-  if (has_clacks == true) {
+  if (has_clacks === true) {
 	  loop = loop + 1;
 	  if (loop > 4) { loop = 0; }
 	  if (loop < 1) {
@@ -42,7 +42,7 @@ function checkTime() {
 		  pos = pos + 1;
 	  } else {
 		  if (current_clacks.length-1 < pos) { pos = 0; };
-		  if (current_clacks.charAt(pos) == " ") {
+		  if (current_clacks.charAt(pos) === " ") {
 			  browser.browserAction.setIcon({
 				  path: {
 					  "16": "data/Clacks16/SPACE.png",
@@ -52,7 +52,7 @@ function checkTime() {
 				  tabId: currentTab.id
 			  });
 			} else {
-			  if (current_clacks.charAt(pos) == "+") {
+			  if (current_clacks.charAt(pos) === "+") {
 			    browser.browserAction.setIcon({
 				    path: {
 					    "16": "data/Clacks16/END.png",
@@ -93,7 +93,7 @@ function updateActiveTab(tabs) {
     if (tabs[0]) {
       currentTab = tabs[0];
 	    const l = pages.indexOf(currentTab.url);
-      if (l == -1) {
+      if (l === -1) {
 	      current_clacks = "Nothing in the overhead";
 		    has_clacks = false;
       } else {
@@ -110,10 +110,10 @@ function updateActiveTab(tabs) {
 
 function setGNU(e) {
   for (let header of e.responseHeaders) {
-    if (header.name.toLowerCase() == "x-clacks-overhead") {
-	    if (pages.indexOf(e.url) == -1) {
+    if (header.name.toLowerCase() === "x-clacks-overhead") {
+	    if (pages.indexOf(e.url) === -1) {
 		    pages.push(e.url);
-		    clacks.push("+"+header.value);
+		    clacks.push("+" + header.value);
 	    }
     }
   }
@@ -134,9 +134,9 @@ function openPage() {
   });
 }
 function notify(message) {
-  if (pages.indexOf(message.url) == -1) {
+  if (pages.indexOf(message.url) === -1) {
 		pages.push(message.url);
-		clacks.push("+"+message.value);
+		clacks.push("+" + message.value);
 	}
 	updateActiveTab();
 }
