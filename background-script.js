@@ -117,7 +117,7 @@ function setGNU(e) {
 	    }
     }
   }
-  return {responseHeaders: e.responseHeaders};
+  return { responseHeaders: e.responseHeaders };
 }
 
 // Listen for onHeaderReceived for the target page.
