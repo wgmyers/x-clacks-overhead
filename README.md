@@ -13,5 +13,5 @@ This is NOT the official repository of the gnu_terry_pratchett firefox addon/ext
 I simply downloaded the xpi installation file, renamed the extension to .zip, extract & here it is!
 
 ## links:
-Oficial developer: https://addons.mozilla.org/en-GB/firefox/user/11544584/  
-Oficial extension link: https://addons.mozilla.org/en-GB/firefox/addon/gnu_terry_pratchett/
+Official developer: https://addons.mozilla.org/en-GB/firefox/user/11544584/  
+Official extension link: https://addons.mozilla.org/en-GB/firefox/addon/gnu_terry_pratchett/
