@@ -20,7 +20,7 @@ function sanitiseMsg(msg) {
   element.innerText = msg;
   goodMsg = element.innerHTML;
   if (goodMsg.length > max_msg_length) {
-    goodMsg = goodMsg.substring(max_msg_length - 1);
+    goodMsg = goodMsg.substring(0, max_msg_length - 1);
   }
   return goodMsg;
 }
