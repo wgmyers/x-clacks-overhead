@@ -3,9 +3,9 @@
   "name": "X-Clacks-Overhead",
   "manifest_version": 2,
   "description": "Display the X-Clacks-Overhead in Clacks Semaphore, including http-equiv meta tags. Fork from GNU_Terry_Pratchett",
-  "author": "Rob Grundy, Jay Logan",
-  "version": "0.4.1",
-  
+  "author": "Rob Grundy, Jay Logan, Wayne Myers",
+  "version": "0.4.2",
+
   "permissions": [
     "webRequest",
 	"tabs",
@@ -21,7 +21,7 @@
   "background": {
 	  "scripts": ["background-script.js"]
 	},
-	
+
   "browser_action": {
     "default_icon": {
 			"16": "data/Clacks16/BLANK.png",
