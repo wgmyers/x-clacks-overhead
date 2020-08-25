@@ -8,8 +8,8 @@
 
   "permissions": [
     "webRequest",
-	"tabs",
-	"alarms",
+	  "tabs",
+	  "alarms",
     "<all_urls>"
   ],
   "content_scripts": [
