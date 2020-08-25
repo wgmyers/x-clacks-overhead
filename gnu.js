@@ -1,3 +1,6 @@
+// gnu.js
+// Handle HTML header embedded X-Clacks-Overheads
+
 let i;
 const metas = document.getElementsByTagName('meta');
 for (i=0; i < metas.length; i++) {
