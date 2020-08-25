@@ -1,17 +1,32 @@
-let currentTab;
+// background-script.js
+// Main part of x-clacks-overhead extension
+
+const max_msg_length = 1024; // Cannot find info on max clacks length in TP
 const pages = [];
 const clacks = [];
 let current_clacks;
+let currentTab;
 let has_clacks;
 let pos = 0;
 let loop = 0;
 
+
+// sanitiseMsg
+// Escape naughty HTML
+// Truncate message to max_msg_length
 function sanitiseMsg(msg) {
+  let goodMsg;
   const element = document.createElement('div');
   element.innerText = msg;
-  return element.innerHTML;
+  goodMsg = element.innerHTML;
+  if (goodMsg.length > max_msg_length) {
+    goodMsg = goodMsg.substring(max_msg_length - 1);
+  }
+  return goodMsg;
 }
 
+// drySetIcon
+// Take an icon name, set that icon
 function drySetIcon(icon) {
   let img = icon + ".png";
   browser.browserAction.setIcon({
@@ -24,6 +39,8 @@ function drySetIcon(icon) {
   });
 }
 
+// updateIcon
+// On new tab, set icon title and initial clacks message char, if any
 function updateIcon() {
   has_clacks ? drySetIcon("END") : drySetIcon("BLANK");
   browser.browserAction.setTitle({
@@ -33,6 +50,8 @@ function updateIcon() {
   });
 }
 
+// checkTime
+// Update clacks message char on loop, if we have any
 function checkTime() {
   if (has_clacks === true) {
 	  loop = loop + 1;
@@ -41,7 +60,7 @@ function checkTime() {
       drySetIcon("BLANK");
 		  pos = pos + 1;
 	  } else {
-		  if (current_clacks.length-1 < pos) { pos = 0; };
+		  if ((current_clacks.length - 1) < pos) { pos = 0; };
 		  if (current_clacks.charAt(pos) === " ") {
         drySetIcon("SPACE");
 			} else {
@@ -59,6 +78,8 @@ function checkTime() {
   }
 }
 
+// updateActiveTab
+// Handle new tabs to see if we have clacks to deal with or not
 function updateActiveTab(tabs) {
 
   function updateTab(tabs) {
@@ -71,15 +92,19 @@ function updateActiveTab(tabs) {
       } else {
         current_clacks = clacks[l];
 		    has_clacks = true;
+        pos = 0;
+        loop = 0;
 	    }
 	    updateIcon();
     }
   }
 
-  const gettingActiveTab = browser.tabs.query({active: true, currentWindow: true});
+  const gettingActiveTab = browser.tabs.query({ active: true, currentWindow: true });
   gettingActiveTab.then(updateTab);
 }
 
+// setGNU
+// Find and handle X-Clacks-Overhead headers
 function setGNU(e) {
   for (let header of e.responseHeaders) {
     if (header.name.toLowerCase() === "x-clacks-overhead") {
@@ -101,11 +126,14 @@ browser.webRequest.onHeadersReceived.addListener(
   ["responseHeaders"]
 );
 
+// Open link to explanatory web page
 function openPage() {
   browser.tabs.create({
     url: "http://www.gnuterrypratchett.com/"
   });
 }
+
+// Collect messages from gnu.js
 function notify(message) {
   if (pages.indexOf(message.url) === -1) {
 		pages.push(message.url);
@@ -114,8 +142,10 @@ function notify(message) {
 	updateActiveTab();
 }
 
+// Message handler for gnu.js
 browser.runtime.onMessage.addListener(notify);
 
+// Click handler for explanatory web page
 browser.browserAction.onClicked.addListener(openPage);
 
 // listen to tab URL changes
