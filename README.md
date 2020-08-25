@@ -34,3 +34,4 @@ Official extension link: https://addons.mozilla.org/en-GB/firefox/addon/gnu_terr
 * Fix multiple X-Clacks-Semaphore header bug
 * Sanitise and truncate messages before handling for security
 * Restart message display on new tab show
+* Cycle through semaphore characters faster
