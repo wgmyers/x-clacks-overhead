@@ -6,19 +6,20 @@ let has_clacks;
 let pos = 0;
 let loop = 0;
 
-function updateIcon() {
+function drySetIcon(icon) {
+  let img = icon + ".png";
   browser.browserAction.setIcon({
-    path: has_clacks ? {
-			"16": "data/Clacks16/END.png",
-			"32": "data/Clacks32/END.png",
-			"64": "data/Clacks64/END.png"
-    } : {
-			"16": "data/Clacks16/BLANK.png",
-			"32": "data/Clacks32/BLANK.png",
-			"64": "data/Clacks64/BLANK.png"
+    path: {
+      "16": "data/Clacks16/" + img,
+      "32": "data/Clacks32/" + img,
+      "64": "data/Clacks64/" + img
     },
     tabId: currentTab.id
   });
+}
+
+function updateIcon() {
+  has_clacks ? drySetIcon("END") : drySetIcon("BLANK");
   browser.browserAction.setTitle({
     // Screen readers can see the title
     title: has_clacks ? current_clacks : "Nothing in the overhead" ,
@@ -31,55 +32,20 @@ function checkTime() {
 	  loop = loop + 1;
 	  if (loop > 4) { loop = 0; }
 	  if (loop < 1) {
-		  browser.browserAction.setIcon({
-			  path: {
-					"16": "data/Clacks16/BLANK.png",
-					"32": "data/Clacks32/BLANK.png",
-					"64": "data/Clacks64/BLANK.png"
-				},
-				tabId: currentTab.id
-			});
+      drySetIcon("BLANK");
 		  pos = pos + 1;
 	  } else {
 		  if (current_clacks.length-1 < pos) { pos = 0; };
 		  if (current_clacks.charAt(pos) === " ") {
-			  browser.browserAction.setIcon({
-				  path: {
-					  "16": "data/Clacks16/SPACE.png",
-					  "32": "data/Clacks32/SPACE.png",
-					  "64": "data/Clacks64/SPACE.png"
-					},
-				  tabId: currentTab.id
-			  });
+        drySetIcon("SPACE");
 			} else {
 			  if (current_clacks.charAt(pos) === "+") {
-			    browser.browserAction.setIcon({
-				    path: {
-					    "16": "data/Clacks16/END.png",
-					    "32": "data/Clacks32/END.png",
-					    "64": "data/Clacks64/END.png"
-				    },
-				    tabId: currentTab.id
-			    });
+          drySetIcon("END");
 			  } else {
 			    try {
-				    browser.browserAction.setIcon({
-					    path: {
-						    "16": "data/Clacks16/"+current_clacks.charAt(pos).toUpperCase()+".png",
-						    "32": "data/Clacks32/"+current_clacks.charAt(pos).toUpperCase()+".png",
-						    "64": "data/Clacks64/"+current_clacks.charAt(pos).toUpperCase()+".png"
-					    },
-					    tabId: currentTab.id
-				    });
-			    } catch (ex4) {
-				    browser.browserAction.setIcon({
-					    path: {
-						    "16": "data/Clacks16/SPACE.png",
-						    "32": "data/Clacks32/SPACE.png",
-						    "64": "data/Clacks64/SPACE.png"
-						  },
-					    tabId: currentTab.id
-				    });
+            drySetIcon(current_clacks.charAt(pos).toUpperCase());
+			    } catch (err) {
+            drySetIcon("SPACE");
 			    }
 			  }
 		  }
