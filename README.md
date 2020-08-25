@@ -6,7 +6,7 @@ In tribute to the late Sir Terry Pratchett many websites are adding the message 
 
 Concept: Richard Atha-Nicholls  
 Art: Amy Atha-Nicholls  
-Coding: Rob Grundy
+Coding: Rob Grundy 
 Fixes: Jay Logan, Wayne Myers
 
 ## important
