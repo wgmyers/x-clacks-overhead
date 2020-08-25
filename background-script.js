@@ -107,13 +107,14 @@ function updateActiveTab(tabs) {
 // Find and handle X-Clacks-Overhead headers
 function setGNU(e) {
   for (let header of e.responseHeaders) {
-    if (header.name.toLowerCase() === "x-clacks-overhead") {
+    if (header.name === "X-Clacks-Overhead") {
 	    if (pages.indexOf(e.url) === -1) {
 		    pages.push(e.url);
 		    clacks.push("+" + sanitiseMsg(header.value));
 	    }
+      break; // Only allow one X-Clacks-Overhead msg per site
     }
-    break; // Only allow one X-Clacks-Overhead msg per site
+
   }
   return { responseHeaders: e.responseHeaders };
 }
