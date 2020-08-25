@@ -6,6 +6,12 @@ let has_clacks;
 let pos = 0;
 let loop = 0;
 
+function sanitiseMsg(msg) {
+  const element = document.createElement('div');
+  element.innerText = msg;
+  return element.innerHTML;
+}
+
 function drySetIcon(icon) {
   let img = icon + ".png";
   browser.browserAction.setIcon({
@@ -79,7 +85,7 @@ function setGNU(e) {
     if (header.name.toLowerCase() === "x-clacks-overhead") {
 	    if (pages.indexOf(e.url) === -1) {
 		    pages.push(e.url);
-		    clacks.push("+" + header.value);
+		    clacks.push("+" + sanitiseMsg(header.value));
 	    }
     }
     break; // Only allow one X-Clacks-Overhead msg per site
@@ -103,7 +109,7 @@ function openPage() {
 function notify(message) {
   if (pages.indexOf(message.url) === -1) {
 		pages.push(message.url);
-		clacks.push("+" + message.value);
+		clacks.push("+" + sanitiseMsg(message.value));
 	}
 	updateActiveTab();
 }
