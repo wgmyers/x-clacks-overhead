@@ -82,6 +82,7 @@ function setGNU(e) {
 		    clacks.push("+" + header.value);
 	    }
     }
+    break; // Only allow one X-Clacks-Overhead msg per site
   }
   return { responseHeaders: e.responseHeaders };
 }
