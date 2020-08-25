@@ -110,7 +110,7 @@ function setGNU(e) {
     if (header.name.toLowerCase() === "x-clacks-overhead") {
 	    if (pages.indexOf(e.url) === -1) {
 		    pages.push(e.url);
-		    clacks.push(sanitiseMsg(header.value) + "+");
+		    clacks.push("+" + sanitiseMsg(header.value));
 	    }
       break; // Only allow one X-Clacks-Overhead msg per site
     }
@@ -138,7 +138,7 @@ function openPage() {
 function notify(message) {
   if (pages.indexOf(message.url) === -1) {
 		pages.push(message.url);
-		clacks.push(sanitiseMsg(message.value) + "+");
+		clacks.push("+" + sanitiseMsg(message.value));
 	}
 	updateActiveTab();
 }
