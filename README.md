@@ -10,7 +10,7 @@ Coding: Rob Grundy, Jay Logan
 
 ## important
 This is NOT the official repository of the gnu_terry_pratchett firefox addon/extension.  
-I simply downloaded the xpi installation file, renamed the extension to .zip, extract & here it is!
+I ([https://github.com/TheBallOfAeolus](TheBallOfAeolus))simply downloaded the xpi installation file, renamed the extension to .zip, extract & here it is!
 
 ## links:
 Official developer: https://addons.mozilla.org/en-GB/firefox/user/11544584/  
@@ -26,7 +26,7 @@ Official extension link: https://addons.mozilla.org/en-GB/firefox/addon/gnu_terr
 
 * Fix bug in gnu.js (Jay Logan)
 
-### 0.4.2
+### 0.4.2 (Wayne Myers)
 
 * Fix formatting
 * Minor code refactor
