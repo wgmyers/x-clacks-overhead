@@ -55,7 +55,7 @@ function updateIcon() {
 function checkTime() {
   if (has_clacks === true) {
 	  loop = loop + 1;
-	  if (loop > 4) { loop = 0; }
+	  if (loop > 1) { loop = 0; }
 	  if (loop < 1) {
       drySetIcon("BLANK");
 		  pos = pos + 1;
@@ -159,7 +159,7 @@ browser.tabs.onActivated.addListener(updateActiveTab);
 browser.windows.onFocusChanged.addListener(updateActiveTab);
 
 browser.alarms.onAlarm.addListener(checkTime);
-browser.alarms.create('checkTime', {periodInMinutes: 0.02});
+browser.alarms.create('checkTime', {periodInMinutes: 0.01});
 
 // update when the extension loads initially
 updateActiveTab();
