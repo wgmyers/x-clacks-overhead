@@ -6,7 +6,8 @@ In tribute to the late Sir Terry Pratchett many websites are adding the message 
 
 Concept: Richard Atha-Nicholls  
 Art: Amy Atha-Nicholls  
-Coding: Rob Grundy, Jay Logan
+Coding: Rob Grundy
+Fixes: Jay Logan, Wayne Myers
 
 ## important
 This is NOT the official repository of the gnu_terry_pratchett firefox addon/extension.  
